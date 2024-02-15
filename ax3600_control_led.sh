@@ -29,10 +29,14 @@ turn_beat_led() {
 
 # Initialize LEDs
 init_leds() {  
+        turn_off_led "$LED_AIOT______BLUE"
+        turn_off_led "$LED_NETWORK_YELLOW"
+        turn_off_led "$LED_NETWORK___BLUE"
+        turn_off_led "$LED_SYSTEM__YELLOW"
+        turn_off_led "$LED_SYSTEM____BLUE"
+
         turn_blink_led "$LED_AIOT______BLUE"
-        turn_blink_led "$LED_NETWORK_YELLOW"
         turn_blink_led "$LED_NETWORK___BLUE"
-        turn_blink_led "$LED_SYSTEM__YELLOW"
         turn_blink_led "$LED_SYSTEM____BLUE"
 } 
 

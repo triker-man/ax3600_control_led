@@ -22,6 +22,16 @@ declare -A test_states=(
     [5G]=0
 )
 
+# Send to Telegram
+send_telegram_message() {
+    GROUP_ID="XXXXXXXXXXXXXXX"                                                                                         
+    BOT_TOKEN="XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX" 
+
+    local message="$1"
+    wget -qO- --post-data="chat_id=$GROUP_ID&text=$message" \
+    "https://api.telegram.org/bot$BOT_TOKEN/sendMessage" > /dev/null
+}
+
 # Generic function to control LEDs
 control_led() {
     local led=$1
@@ -72,14 +82,18 @@ run_5g_test() {
 handle_critical_failure() {
     local error_message=$1
     local timestamp=$(date '+%Y-%m-%d %H:%M:%S')
-    echo "[$timestamp] ERROR: $error_message" >> "$ERROR_LOG"
+    local message="[$timestamp] ERROR: $error_message" 
+    echo $message >> "$ERROR_LOG"    # Log to file
+    send_telegram_message "$message" # Send to Telegram
 }
 
 # Function to handle recoveries and log when a failure is resolved
 handle_recovery() {
     local recovery_message=$1
     local timestamp=$(date '+%Y-%m-%d %H:%M:%S')
-    echo "[$timestamp] RECOVERY: $recovery_message" >> "$ERROR_LOG"
+    local message="[$timestamp] RECOVERY: $recovery_message"
+    echo $message >> "$ERROR_LOG"    # Log to file                                                                                 
+    send_telegram_message "$message" # Send to Telegram     
 }
 
 # Main function to perform tests

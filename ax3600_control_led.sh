@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Define LED paths as constants in an associative array
+# Define LED paths as constants in an associative array.
 declare -A LEDS=(
     [AIOT_BLUE]="/sys/class/leds/blue:aiot/trigger"
     [NETWORK_YELLOW]="/sys/class/leds/yellow:network/trigger"

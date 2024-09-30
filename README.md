@@ -1,8 +1,9 @@
 ## ax3600_control_led
 Script for Xiaomi AX3600 with OpenWRT.
 Perform checks and notify results on router LEDs.
-Added: test changelog to a file.
-Added: test changelog to Telegram
+Added: Test changelog to a file.
+Added: Test changelog to Telegram
+Added: Offline queue for Telegram messages.
 <hr>
 
 <b>Install:</b>

@@ -28,7 +28,7 @@ declare -A test_states=(
 # Function to send a message to Telegram
 send_telegram_message() {
     local message="$1"
-    local GROUP_ID="XXXXXXXXXXXXXXX"                                                                                         
+    local GROUP_ID="XXXXXXXXXXXXXXX"
     local BOT_TOKEN="XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX" 
     
     # Try to send message. If it fails, store it in the pending queue
